@@ -6,21 +6,21 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <link href="https://fonts.googleapis.com/css?family=Special+Elite" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css?family=Playball|Special+Elite" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Merienda:400,700" rel="stylesheet">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   <link rel="stylesheet" href="css/master.css">
-  <title>Proyecto fllipa</title>
+  <title>Proyecto FloPaTin</title>
 </head>
 
 <body>
   <header class="encabezado">
-    <nav class="navbar navbar-expand-lg navbar-light">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark navbarra">
       <img class="logo" src="img/logo1.png" alt="logo_proyecto">
-      <h2>Proyecto Flopatin</h2>
+      <h2>Proyecto FloPaTin</h2>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
       </button>
-      <div class="collapse navbar-collapse tamaño_navbar" id="navbarNav">
+      <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav ml-md-auto">
           <li class="nav-item active">
             <a class="nav-link" href="#">Inicio <span class="sr-only">(current)</span></a>
@@ -38,11 +38,11 @@
       </div>
       <img class="logo d-none d-md-block" src="img/logo.png" alt="logo_proyecto">
     </nav>
-    <div id="carouselExampleControls" class="carousel slide carousel-fade container-fluid p-0" data-ride="carousel">
+    <div id="carouselExampleControls" class="carousel slide carousel-fade" data-ride="carousel">
       <div class="carousel-inner">
         <div class="carousel-item active slide1">
           <div class="posicion_texto">
-            <h3>PROYECTO FLOPATIN</h3>
+            <h3>FloPaTin</h3>
             <p>Plataforma de preguntas y respuestas.</p>
           </div>
         </div>
@@ -69,27 +69,24 @@
   </header>
   <div class="container-fluid p-0">
     <section class="secciongral">
-      <div class="row">
+      <div class="row contenedorprincipal">
         <article class="tablaposiciones col-xs-12 col-sm-12 col-md-2 col-lg-2 col-xl-2">
-          <p>Listado de los mejores 20 en el juego</p>
+          <p class="ayudas">A modo de ayuda para la visualización del sitio. En esta sección va el listado de los mejores 20 en el juego</p>
         </article>
-         <article class="chatgeneral col-xs-12 col-sm-12 col-md-8 col-lg-8 col-xl-8">
-             <form action="" method="POST"  >
-               <label>Agrega un comentario</label>
+         <article class="chatgeneral col-xs-12 col-sm-12 col-md-7 col-lg-7 col-xl-7">
+             <form class="formcomentarios" action="" method="POST">
+               <label>Agrega un<br>comentario</label>
                <textarea id="textarea" name="comentario" id="comentario" cols="50"></textarea>
                <button class="btn-buttom btn-primary" type="submit">Enviar</button>
              </form>
+             <p>En esta sección de la pagina la idea es que se puendan ir publicando los comentarios. Quedando como una sala de chat general y así poder hablar entre todos.</p>
          </article>
          <article class="miembrosvisibles col-md-2 col-lg-2 col-xl-2 d-none d-md-block">
-           <p>Tabla que muestra usuarios conetactados</p>
+           <p class="ayudas">A modo de ayuda para la visualización del sitio. En esta sección va la tabla que muestra usuarios conetactados</p>
          </article>
       </div>
      </section>
   </div>
-
-
-
-
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>

@@ -2,21 +2,37 @@
   box-sizing: border-box;
 }
 body{
-  background-image: url(../img/fondo_principal.jpeg);
+  background-image: url(../img/prueba.jpeg);
+  background-repeat: no-repeat;
+  background-size: cover;
 }
-.posicion_texto h3 {
-  font-weight: 400;
-  font-size: 60px;
-  font-family: 'Special Elite', cursive;
-  color: white;
-  margin-top: 10px;
+.navbarra{
+  padding: 0;
+  /*background-color: #9e9e9e;*/
+  font-size: 16px;
+  background-color: #000;
 }
-.posicion_texto p {
+nav h2{
   color: #ffecb3;
-  font-family: 'Playball', cursive;
-  font-weight: 400;
-  font-size: 25px;
+  font-family: 'Special Elite', cursive;
+  font-size: 32px;
+  margin-top:8px;
 }
+
+.carousel-inner{
+  min-height: 20vh;
+}
+.slide1,.slide2,.slide3,.slide4 {
+  background-image: url("../img/libros-carrusel.jpg");
+}
+
+/*.carousel-inner .carousel-item::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+}*/
 .posicion_texto {
   display: flex;
   flex-direction: column;
@@ -25,45 +41,53 @@ body{
   text-align: center;
   z-index: 10;
 }
-.seccion-carousel{
-  min-height: 20vh;
-}
-/*.seccion-carousel .carousel-inner .carousel-item::before {
-  content: "";
-  position: absolute;
-  width: 100%;
-  height: 100vh;
-  background-color: rgba(0, 0, 0, 0.8);
-  z-index: 0;
-}*/
-.slide1,.slide2,.slide3,.slide4 {
-  background-image: url("../img/fondo_principal.jpg");
-}
-nav h2{
-  color: #ffecb3;
+.posicion_texto h3 {
+  font-weight: 400;
+  font-size: 60px;
   font-family: 'Special Elite', cursive;
-  font-size: 32px;
-  margin-top:10px;
-}
-nav{
-  background-color: #9B8D7A;
-/*  height: 8vh;*/
-  font-size: 16px;
-}
-.logo{
-  position:relative;
-  top:-18px;
-  z-index: 90;
-}
-.container{
+  color: #ffecb3;
   margin-top: 10px;
 }
-.secciongral{
-  margin-top: 5px;
+.posicion_texto p {
+  color: white;
+  font-family: 'Merienda', cursive;
+  font-weight: 700;
+  font-size: 25px;
+}
+
+.contenedorprincipal{
+  height: 425px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.tablaposiciones{
+  margin: 2%;
+}
+.miembrosvisibles{
+  margin-left: 2%;
+  margin-bottom: 2%;
+  margin-top: 2%;
 }
 .tablaposiciones,.miembrosvisibles{
-  background-image: url(../img/fondotablas.jpg);
+  background-color:rgba(2, 119, 62, 1);
+  padding: 0;
+}
+.ayudas{
+  color: white;
 }
 .chatgeneral{
-  background-image: url(../img/fondoComentarios.jpg);
+  background-color: #364D3F;
+/*  background-image: url(../img/fondoComentarios.jpg);*/
+  padding: 0;
+  font-family: 'Merienda', cursive;
+  font-weight: 400;
+  color: #ffecb3;
+  margin-top: 2%;
+}
+.formcomentarios{
+  margin:  10px;
+}
+button{
+  position:relative;
+  top:-20px;
 }

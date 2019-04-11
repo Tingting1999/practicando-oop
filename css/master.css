@@ -221,6 +221,48 @@ h5{
   margin-bottom: 10px;
 }
 
+
+/*comienzo de estilo del perfil*/
+.contenedorperfil{
+  margin: 20px 50px auto;
+}
+.cuadroperfil1,.cuadroperfil2{
+  text-align: center;
+  padding: 15px;
+}
+
+.cuadroperfil2{
+  background-color:#4f6b5a;
+  height: 350px;
+  color: white;
+/*  margin: 0 100px auto;*/
+}
+.estadoperfil{
+  padding-left: 10px;
+  padding-bottom: 10px;
+}
+.tablaperfil{
+  padding: 10px;
+}
+.cuadroperfil1 h5,.tablaperfil h5{
+    font-weight: 400;
+    font-size: 18x;
+    font-family: 'Special Elite', cursive;
+    color: #ffecb3;
+}
+.cuadroperfil1 p{
+    color: white;
+    font-family: 'Merienda', cursive;
+    font-weight: 700;
+    font-size: 12px;
+  }
+.tiempoperfil{
+  color: white;
+  font-family: 'Merienda', cursive;
+  font-size: 8px;
+}
+
+
 /*Comienzo de estilo para ayuda*/
 .marg-ayuda{
   margin-top: 20px;

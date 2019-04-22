@@ -1,3 +1,17 @@
+<?php
+ include_once("controladores/funciones.php");
+   if ($_POST) {
+     $errores= validar($_POST);
+     if (count($errores)==0) {
+       $registro= crearRegistro($_POST);
+       guardar($registro);
+       header("location:index.php");
+     }
+   }
+?>
+
+
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -21,10 +35,10 @@
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav ml-md-auto">
           <li class="nav-item active">
-            <a class="nav-link" href="index.html">Login<span class="sr-only">(current)</span></a>
+            <a class="nav-link" href="index.php">Login<span class="sr-only">(current)</span></a>
           </li>
           <li class="nav-item active">
-            <a class="nav-link" href="formularioDeRegistracion.html">Registrarse<span class="sr-only">(current)</span></a>
+            <a class="nav-link" href="formularioDeRegistracion.php">Registrarse<span class="sr-only">(current)</span></a>
           </li>
           <li class="nav-item active">
             <a class="nav-link" href="inicio.html">Inicio <span class="sr-only">(current)</span></a>
@@ -45,31 +59,40 @@
   </header>
 
   <div class="contener-fluid">
+
+    <?php if(isset($errores)):
+      echo "<ul class='alert alert-danger text-center'>";
+      foreach ($errores as $key => $value) :?>
+        <li><?=$value;?> </li>
+      <?php endforeach;
+      echo "</ul>";
+      endif;?>
+
     <form class="formulario1" action="" method="post">
       <h2>Create una cuenta para sociabilizar y aprender</h2>
       <label for="nombre" class="label1">Nombre</label>
-      <input type="text" name="nombre" value="" class="field" required>
+      <input type="text" name="nombre" value="<?=(isset($errores["nombre"]))?"" :persistir("nombre");?>" class="field">
 
       <label for="apellido" class="label1">Apellido</label>
-      <input type="text" name="apellido" value="" class="field" required>
+      <input type="text" name="apellido" value="<?=(isset($errores["apellido"]))?"" :persistir("apellido");?>" class="field">
 
-      <label for="nombre de usuario" class="label1">Nombre de Usuario</label>
-      <input type="text" name="nombre de usuario" class="field" value="" required>
+      <label for="nombre-de-usuario" class="label1">Nombre de Usuario</label>
+      <input type="text" name="nombre-de-usuario" class="field" value="<?=(isset($errores["nombre-de-usuario"]))?"" :persistir("nombre-de-usuario");?>">
 
       <label for="email" class="label1">Mail de referencia</label>
-      <input type="email" name="email" value="" class="field" required>
+      <input type="email" name="email" value="<?=(isset($errores["email"]))?"" :persistir("email");?>" class="field">
 
       <label for="password" class="label1">Contraseña</label>
-      <input type="password" name="password" value="" class="field"required>
+      <input type="password" name="password" value="" class="field">
       <small id="passwordHelpInline" class="text-muted smallpass">
       Utiliza ocho caracteres como mínimo con una combinación de letras, números y símbolos
       </small><br><br>
 
       <label for="reconfi-password" class="label1">Reconfirmación de la contraseña</label>
-      <input type="password" name="reconfi-password" value="" class="field" required>
+      <input type="password" name="reconfi-password" value="" class="field">
 
       <label for="nacimiento" class="label1">Fecha de nacimiento</label>
-      <input type="date" name="nacimiento" value="" class="field" required>
+      <input type="date" name="nacimiento" value="<?=(isset($errores["nacimiento"]))?"" :persistir("nacimiento");?>" class="field">
       <div class="sexo">
            <label for="sex" class="label1">Sexo</label><br>
            <input type="radio" name="sex" value="M" class="sexo">Masculino <br>

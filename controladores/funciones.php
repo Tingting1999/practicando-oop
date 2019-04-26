@@ -1,4 +1,10 @@
 <?php
+ function dd($valor){
+   echo "<pre>";
+    var_dump($valor);
+   exit;
+   echo "</pre>";
+ }
 
  function validar($datos){
    $errores=[];
@@ -31,13 +37,25 @@
      $errores["password"]="Complete su contraseña";
    }elseif (strlen($password)<8) {
      $errores["password"]="La contraseña debe tener minimo 8 caracteres";
-   }elseif (!preg_match('´[a-z]´', $password)) {
+   }elseif (!preg_match('/[a-z]/', $password)) {
      $errores["password"]="La contraseña deber contener al menos una letra";
-   }elseif (!preg_match('´[0-9]´', $password)) {
+   }elseif (!preg_match('/[0-9]/', $password)) {
      $errores["password"]="La contraseña deber contener al menos un numero";
    }elseif ($password!=$repassword) {
      $errores["reconfi-password"]="No coinciden las contraseñas";
    }
+
+
+   if (isset($_FILES)) {
+    if ($_FILES["foto"]["error"]!=UPLOAD_ERR_OK) {
+      $errores["foto"]="Debe subir una foto";
+    }
+    $nombre=$_FILES["foto"]["name"];
+    $ext= pathinfo($nombre, PATHINFO_EXTENSION);
+    if ($ext !="jpg" && $ext !="png") {
+      $errores["foto"]="Debe ser un archivo jpg ó png";
+    }
+  }
    return $errores;
  }
 
@@ -47,13 +65,29 @@ function persistir($campo){
   }
 }
 
-function crearRegistro($datos){
+function armarFoto($imagen){ /*amar la ruta para guadar el archivo*/
+  $nombre = $imagen["foto"]["name"];
+  $ext=pathinfo($nombre, PATHINFO_EXTENSION);
+  $archivoOrigen= $imagen["foto"]["tmp_name"];
+  $archivoDestino= dirname(__DIR__);
+  $archivoDestino=$archivoDestino."/imagenes/";
+  $foto=uniqid();
+  $archivoDestino= $archivoDestino . $foto;
+  $archivoDestino=$archivoDestino."." .$ext;
+  move_uploaded_file($archivoOrigen, $archivoDestino);
+  $foto= $foto. "." . $ext;
+  return $foto;
+}
+
+function armarRegistro($datos, $imagen){
   $usuario=[
     "nombre"=> $datos["nombre"],
     "apellido"=> $datos["apellido"],
     "nombreUsuario"=>$datos["nombre-de-usuario"],
     "email"=>$datos["email"],
-    "password"=>password_hash($datos["password"], PASSWORD_DEFAULT)
+    "password"=>password_hash($datos["password"], PASSWORD_DEFAULT),
+    "foto"=>$imagen,
+    "perfil"=>1
   ];
   return $usuario;
 }
@@ -63,5 +97,24 @@ function guardar($usuario){
   file_put_contents("usuarios.json", $jsusuario.PHP_EOL, FILE_APPEND);
 }
 
+function checkearEmail($email){
+  $usuarios= abrirBaseDatos();
+
+   foreach($usuarios as $usuario){
+    if ($email== $usuario["email"]) {
+      return null;
+    }
+   }
+}
+
+function abrirBaseDatos(){
+ $baseDatosJson= file_get_contents("usuarios.json");
+ $baseDatosJson= explode(PHP_EOL, $baseDatosJson);
+   array_pop($baseDatosJson);
+   foreach ($baseDatosJson as $usuarios) {
+     $arrayUsuarios[]=json_decode($usuarios, true);
+   }
+   return $arrayUsuarios;
+}
 
  ?>

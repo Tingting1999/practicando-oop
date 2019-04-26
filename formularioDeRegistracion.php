@@ -3,11 +3,20 @@
    if ($_POST) {
      $errores= validar($_POST);
      if (count($errores)==0) {
-       $registro= crearRegistro($_POST);
+       $foto= armarFoto($_FILES);
+       $usuario=checkearEmail($_POST["email"]);
+       if ($_POST["email"] == $usuario["email"]){
+           $errores["email"]= "El mail ingresado ya existe. Ingrese otro mail";
+       }
+
+       $registro= armarRegistro($_POST, $foto);
        guardar($registro);
+
        header("location:index.php");
+       exit;
      }
    }
+
 ?>
 
 
@@ -68,7 +77,7 @@
       echo "</ul>";
       endif;?>
 
-    <form class="formulario1" action="" method="post">
+    <form class="formulario1" action="" method="post" enctype="multipart/form-data">
       <h2>Create una cuenta para sociabilizar y aprender</h2>
       <label for="nombre" class="label1">Nombre</label>
       <input type="text" name="nombre" value="<?=(isset($errores["nombre"]))?"" :persistir("nombre");?>" class="field">
@@ -140,6 +149,11 @@
              </optgroup>
            </select>
          </div>
+         <br>
+         <div class="archivo">
+            Archivo: <input type="file" name="foto" id="foto" value="<?=(isset($errores["foto"]))?"" :persistir("foto");?>">
+         </div>
+
          <br>
         <button type="submit" class="bottonacceder">Registrarme</button>
         <ul class="listadeRegistro">

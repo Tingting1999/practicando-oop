@@ -3,7 +3,7 @@ include_once 'includes/head.php';
 include_once 'controladores/validar_login.php';
 include_once 'controladores/validar_registro.php';
 if($_POST){
-  $errores= validar($_POST);
+  $errores= validarOlvidar($_POST);
 
 if(count($errores)==0){
   $usuario=buscarEmail($_POST["email"]);
@@ -46,8 +46,8 @@ if(count($errores)==0){
             </span>
           <?php endif;?>
           <br><br>
-          <label for="repassword" class="label1">Reconfirmación de la contraseña</label><br>
-          <input type="repassword" name="repassword" value="" class="field" required><br>
+          <label for="reconfi-password" class="label1">Reconfirmación de la contraseña</label><br>
+          <input type="password" name="reconfi-password" value="" class="field" required><br>
           <?php if(isset($errores["repassword"])):?>
             <span class="error_login">
               <?php echo $errores["repassword"];?>

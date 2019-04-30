@@ -67,6 +67,27 @@ function buscarEmail($email){
   }
   return null;
 }
+//quiero buscar el nombre de usuario en la base de datos para que luego pueda cambiar el dato
+function buscarNombreUsuario($nombreUsuario){
+  $usuarios=abrirBaseDatos();
+  foreach ($usuarios as $usuario) {
+  if($nombreUsuario === $usuario["nombreUsuario"]){
+    return $usuario;
+    }
+    }
+  return null;
+}
+//quiero buscar la foto del usuario en la base de datos para que luego pueda cambiar el dato
+function buscarFoto($foto){
+  $usuarios=abrirBaseDatos();
+  foreach ($usuarios as $usuario) {
+  if($foto === $usuario["foto"]){
+    return $usuario;
+    }
+    }
+  return null;
+}
+
 //ahora debo hacer una función para que si encontró al usuario extraer sus datos
 function seteoUsuario($user,$dato){
   $_SESSION["nombreUsuario"]=$user["nombreUsuario"];
@@ -91,4 +112,47 @@ function validarUsuario(){
     }else{
         return false;
     }
+}
+
+function olvidarpass($datos){
+    $usuarios = abrirBaseDatos();
+    foreach ($usuarios as $key=>$usuario) {
+        if($datos["email"]==$usuario["email"]){
+            $usuario["password"]= password_hash($datos["password"],PASSWORD_DEFAULT);
+            $usuarios[$key] = $usuario;
+        }
+        $usuarios[$key] = $usuario;
+    }
+
+    unlink("usuarios.json");
+    foreach ($usuarios as  $usuario) {
+        $jsusuario = json_encode($usuario);
+        file_put_contents('usuarios.json',$jsusuario. PHP_EOL,FILE_APPEND);
+    }
+}
+
+function validarOlvidar($datos){
+ $errores=[];
+ 
+ $email=trim($datos["email"]);
+ if (empty($email)) {
+   $errores["email"]="Complete su mail";
+ }elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+   $errores["email"]="Email invalido";
+ }
+
+ $password= trim($datos["password"]);
+ $repassword= trim($datos["reconfi-password"]);
+ if (empty($password)) {
+   $errores["password"]="Complete su contraseña";
+ }elseif (strlen($password)<8) {
+   $errores["password"]="La contraseña debe tener minimo 8 caracteres";
+ }elseif (!preg_match('/[a-z]/', $password)) {
+   $errores["password"]="La contraseña deber contener al menos una letra";
+ }elseif (!preg_match('/[0-9]/', $password)) {
+   $errores["password"]="La contraseña deber contener al menos un numero";
+ }elseif ($password!=$repassword) {
+   $errores["reconfi-password"]="No coinciden las contraseñas";
+ }
+ return $errores;
 }

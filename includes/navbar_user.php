@@ -17,7 +17,7 @@
         <a class="nav-link" href="juego.php">Juegos</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="ayuda.php">Ayuda</a>
+        <a class="nav-link" href="ayuda_user.php">Ayuda</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="logout.php">Cerrar Sesión</a>

@@ -96,14 +96,26 @@ function guardar($usuario){
 
 function checkearEmail($email){
   $usuarios= abrirBaseDatos();
-
-   foreach($usuarios as $usuario){
-    if ($email== $usuario["email"]) {
-      return null;
+  if($usuarios !==null){
+    foreach($usuarios as $usuario){
+     if ($email== $usuario["email"]) {
+         return $usuario;
+      }
     }
    }
+   return null;
 }
 
-
+function checkearUsuario($nombreUsuario){
+  $usuarios= abrirBaseDatos();
+  if($usuarios !==null){
+    foreach($usuarios as $usuario){
+     if ($nombreUsuario== $usuario["nombreUsuario"]) {
+         return $usuario;
+      }
+    }
+   }
+   return null;
+}
 
  ?>

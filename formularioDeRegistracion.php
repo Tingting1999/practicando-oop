@@ -5,9 +5,13 @@ include_once("controladores/validar_login.php");
   if ($_POST) {
     $errores= validar($_POST);
     if (count($errores)==0) {
-      $usuario=buscarEmail($_POST["email"]);
+      $usuario=checkearEmail($_POST["email"]);
       if ($usuario!==null){
           $errores["email"]= "El mail ingresado ya existe. Ingrese otro mail";
+        }
+       $usuario=checkearUsuario($_POST["nombre-de-usuario"]);
+       if ($usuario !==null) {
+          $errores["nombre-de-usuario"]= "El nombre de usuario ingresado ya exite. Ingrese otro nombre de usuario";
       }else{
         $foto= armarFoto($_FILES);
         $registro= armarRegistro($_POST, $foto);

@@ -3,21 +3,28 @@ include_once("controladores/validar_login.php");
 include_once 'includes/head.php';
 include_once 'controladores/validar_registro.php';
 if($_POST){
-  $errores= validar($_POST);
-    if(count($errores)==0 && $bandera1="avatar"){
+
+  if($_POST['form']=="form1"){
+  $bandera1="avatar";
+  $errores= validar_configuracion($_POST,$bandera1);
+    if(count($errores)==0){
       $usuario=buscarFoto($_POST["foto"]);
       $registro=cambioFoto($_POST);
       header("location:perfil.php");
           exit;
-    }else{
-        $usuario=buscarNombreUsuario($_POST["nombreUsuario"]);
+    }
+  }elseif ($_POST['form']=="form2") {
+    $bandera1="nombre";
+    $errores= validar_configuracion($_POST,$bandera1);
+      if(count($errores)==0){
+        $usuario=buscarNombreUsuario($_POST["nombre-de-usuario"]);
+        
         $registro=cambioNombre($_POST);
         header("location:perfil.php");
             exit;
-        }
-      }
-
-
+  }
+  }
+}
 ?>
 
 <title>Proyecto FloPaTin-Configuración</title>
@@ -30,82 +37,46 @@ if($_POST){
   <div class="container-fluid">
     <div class="contenedor_perfil">
       <section>
-        <div class="row maxwidth_perfil">
-          <article class="col-xs-12 col-sm-6 col-md-4 col-lg-4 col-xl-4">
-            <div class="card targeta_perfil">
-              <div class="card-body cuadroperfil1">
-                    <h5 class="card-title">Miembro desde</h5>
-                    <p class="card-text dato_usuario"><?=$_SESSION["fecharegistro"];?></p>
-                    <h5 class="card-title">País</h5>
-                    <p class="card-text dato_usuario"><?=$_SESSION["pais"];?></p>
-                    <h5 class="card-title">Puntos totales actuales</h5>
-                    <p class="card-text puntos_actuales">25000</p>
-              </div>
-            </div>
-            <!--Registro historico de publicaciones-->
-            <div class="card targeta_perfil">
-              <div class="card-body archivohistorico">
-                <h5 class="card-title">Registro de Publicaciones</h5>
-                <p class="card-text">Listado historico de publicaciones, por año y mes, para poder buscar publicaciones viejas.</p>
-                <p class="card-text">
-                  <ul>
-                    <li>
-                      <a href="#">2019(1)</a>
-                      <ul type="triangle">
-                        <li>
-                          <a href="#">Abril</a>
-                        </li>
-                      </ul>
-                    </li>
-                  </ul>
-                </p>
-              </div>
-            </div>
-          </article>
-          <article class="col-xs-12 col-sm-6 col-md-4 col-lg-4 col-xl-4">
+        <div class="maxwidth_configuracion">
+
             <!--foto de perfil-->
             <div class="card targeta_perfil">
               <div class="foto_usuario">
-                <img src="imagenes/<?=$_SESSION["foto"];?>" class="card-img-top" alt="imganenperfil">
+                <img src="imagenes/<?=$_SESSION["foto"];?>" class="card-img-top" alt="">
+                <div class="p-0 formavatar">
+                  <form  action="" method="POST">
+                    <input type="hidden" name="form" value="form1">
+                    <div class="archivo_edit">
+                     <input type="file" name="foto" id="foto" value=" ">
+                     <?php if(isset($errores["foto"])):?>
+                       <span class="error_login">
+                         <?php echo $errores["foto"];?>
+                       </span>
+                     <?php endif;?>
+                    </div>
+                    <button class="bottoneditar bottonavatar" type="submit">Editar</button>
+                  </form>
+                </div>
               </div>
-              <div class="card-body cuadroperfil1">
+              <div class="card-body cuadroperfil1 p-0">
+                <div class="editar">
                   <h5 class="card-title"><?=$_SESSION["nombreUsuario"];?></h5>
-                  <p class="card-text tiempoperfil">Activo hace 20 minutos</p>
+                  <div class="p-0">
+                  <form  action="" method="POST">
+                    <input type="hidden" name="form" value="form2">
+                    <input type="text" name="nombre-de-usuario" class="field editinput" value="">
+                    <?php if(isset($errores["nombre-de-usuario"])):?>
+                      <span class="error_login">
+                        <?php echo $errores["nombre-de-usuario"];?>
+                      </span>
+                    <?php endif;?>
+                    <button class="bottoneditar bottonnombre" type="submit">Editar</button>
+                  </form>
+                </div>
+                </div>
               </div>
             </div>
-          </article>
-          <article class="col-xs-12 col-sm-6 col-md-4 col-lg-4 col-xl-4">
-            <!--Escribe un estado-->
-            <div class="card targeta_perfil">
-              <div class="card-body estadoperfil">
-                <form  action="" method="POST">
-                  <div class="form-group">
-                    <textarea class="form-control estado_textarea" id="FormControlTextarea" rows="1" placeholder="Actualiza tu estado..."></textarea>
-                  </div>
-                  <button class="botton_estado" type="submit">Enviar</button>
-                </form>
-                <br>
-                <p class="card-text">Los libros nunca dejan de sorprenderte.</p>
-                <p class="card-text"><small class="text-muted">Actualizado hace 1 hora</small></p>
-              </div>
-            </div>
-            <!--tabla de posiciones-->
-            <div class="card targeta_perfil">
-              <div class="card-body tablaperfil">
-                <h5 class="card-title">Tabla de Posiciones</h5>
-                <p class="card-text">En este lugar se cargará la posición actual del usuario del perfil, que puede o no estar dentro de los primeros 20 que se muestra en el inicio. Pero el usuario en este lugar puede conocer exactamente su posición en la tabla general.</p>
-              </div>
-            </div>
-          </article>
-          <article class="ml-md-auto col-xs-12 col-sm-6 col-md-8 col-lg-8 col-xl-8">
-            <!--Publicaciones generales-->
-            <div class="card targeta_perfil">
-              <div class="card-body publicaciones_perfil">
-                <h5 class="card-title">Publicaciones</h5>
-                <p class="card-text">Aquí el usuario podrá publicar, comentar y subir material de interes personal.</p>
-              </div>
-            </div>
-          </article>
+
         </div>
       </section>
     </div>

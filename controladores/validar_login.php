@@ -133,7 +133,7 @@ function olvidarpass($datos){
 
 function validarOlvidar($datos){
  $errores=[];
- 
+
  $email=trim($datos["email"]);
  if (empty($email)) {
    $errores["email"]="Complete su mail";
@@ -155,4 +155,49 @@ function validarOlvidar($datos){
    $errores["reconfi-password"]="No coinciden las contraseñas";
  }
  return $errores;
+}
+
+function validar_configuracion($datos,$bandera1){
+ $errores=[];
+ if($bandera1 == "avatar"){
+  if ($_FILES["foto"]["error"]!=UPLOAD_ERR_OK) {
+    $errores["foto"]="Debe subir una foto";
+  }
+  $nombre=$_FILES["foto"]["name"];
+  $ext= pathinfo($nombre, PATHINFO_EXTENSION);
+  if ($ext !="jpg" && $ext !="png") {
+    $errores["foto"]="Debe ser un archivo jpg ó png";
+  }
+}else{
+  $nombreUsuario=trim($datos["nombre-de-usuario"]);
+  if (empty($nombreUsuario)) {
+    $errores["nombre-de-usuario"]= "Complete el campo con un nombre de usuario";
+  }
+}
+ return $errores;
+}
+
+function cambioFoto($datos){
+    $usuarios = abrirBaseDatos();
+    foreach ($usuarios as $key=>$usuario) {
+      $usuario["foto"]= $datos["foto"];
+            $usuarios[$key] = $usuario;
+          }
+    unlink("usuarios.json");
+    foreach ($usuarios as  $usuario) {
+        $jsusuario = json_encode($usuario);
+        file_put_contents('usuarios.json',$jsusuario. PHP_EOL,FILE_APPEND);
+    }
+}
+function cambioNombre($datos){
+    $usuarios = abrirBaseDatos();
+    foreach ($usuarios as $key=>$usuario) {
+      $usuario["nombreUsuario"]= $datos["nombreUsuario"];
+            $usuarios[$key] = $usuario;
+          }
+    unlink("usuarios.json");
+    foreach ($usuarios as  $usuario) {
+        $jsusuario = json_encode($usuario);
+        file_put_contents('usuarios.json',$jsusuario. PHP_EOL,FILE_APPEND);
+    }
 }

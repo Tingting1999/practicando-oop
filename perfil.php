@@ -56,7 +56,10 @@ if(!isset($_SESSION["email"])) {
                 <img src="imagenes/<?=$_SESSION["foto"];?>" class="card-img-top" alt="imganenperfil">
               </div>
               <div class="card-body cuadroperfil1">
+                <div class="editar_perfil">
                   <h5 class="card-title"><?=$_SESSION["nombreUsuario"];?></h5>
+                  <a class="d-block" href="configuraciones.php">Editar Perfil</a>
+                </div>
                   <p class="card-text tiempoperfil">Activo hace 20 minutos</p>
               </div>
             </div>

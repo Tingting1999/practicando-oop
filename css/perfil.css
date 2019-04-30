@@ -19,7 +19,7 @@
   text-align: center;
   padding: 20px 10px;
 }
-.cuadroperfil1 h5,.tablaperfil h5, .publicaciones_perfil h5{
+.cuadroperfil1 h5, .tablaperfil h5, .publicaciones_perfil h5{
     font-weight: 400;
     font-size: 18px;
     font-family: 'Special Elite', cursive;
@@ -31,6 +31,20 @@
     font-weight: 700;
     font-size: 12px;
     line-height: 5px;
+}
+.editar_perfil{
+  display: flex;
+  justify-content: space-between;
+}
+.editar_perfil h5{
+  font-weight: 400;
+  font-size: 32px;
+  font-family: 'Special Elite', cursive;
+  color: #ffecb3;
+}
+.editar_perfil a{
+  text-decoration: none;
+  color: #ff9301;
 }
 .puntos_actuales{
   color: #99ebb3;
@@ -93,4 +107,53 @@
 }
 .publicaciones_perfil{
   background-color: #4f6b5a;
+}
+
+/*###########*/
+.maxwidth_configuracion{
+  max-width: 400px;
+  margin: 0 auto;
+}
+.bottoneditar{
+  padding: 5px 10px;
+  border-radius: 5px;
+  border: none;
+  background-color: #8bd6a1;
+  font-family: 'Merienda', cursive;
+  font-weight: 400;
+  margin-left: 30px;
+  margin-top: 20px;
+  outline: none;
+}
+.bottoneditar:hover {
+    box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.7);
+}
+
+.bottonavatar{
+  position:relative;
+  top:-15px;
+  left: 280px;
+  z-index: 40;
+}
+.bottonnombre{
+  position:relative;
+  left: 20px;
+  z-index: 40;
+  margin: 0;
+}
+.editar h5{
+  font-weight: 400;
+  font-size: 32px;
+  font-family: 'Special Elite', cursive;
+  color: #ffecb3;
+}
+.archivo_edit{
+  font-family: 'Merienda', cursive;
+  font-weight: 400;
+  color: white;
+  display:flex;
+  margin-top: 15px
+}
+.editinput{
+  width: 250px;
 }

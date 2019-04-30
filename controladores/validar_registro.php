@@ -1,12 +1,5 @@
 <?php
- function dd($valor){
-   echo "<pre>";
-    var_dump($valor);
-   exit;
-   echo "</pre>";
- }
-
- function validar($datos){
+  function validar($datos){
    $errores=[];
 
    $nombre= trim($datos["nombre"]);
@@ -80,6 +73,8 @@ function armarFoto($imagen){ /*amar la ruta para guadar el archivo*/
 }
 
 function armarRegistro($datos, $imagen){
+  setlocale(LC_TIME,"es_ES");
+  $fecharegistro=ucfirst(strftime("%B %Y",time()));
   $usuario=[
     "nombre"=> $datos["nombre"],
     "apellido"=> $datos["apellido"],
@@ -87,6 +82,8 @@ function armarRegistro($datos, $imagen){
     "email"=>$datos["email"],
     "password"=>password_hash($datos["password"], PASSWORD_DEFAULT),
     "foto"=>$imagen,
+    "pais"=>$datos["pais"],
+    "fecharegistro"=>$fecharegistro,
     "perfil"=>1
   ];
   return $usuario;
@@ -107,14 +104,6 @@ function checkearEmail($email){
    }
 }
 
-function abrirBaseDatos(){
- $baseDatosJson= file_get_contents("usuarios.json");
- $baseDatosJson= explode(PHP_EOL, $baseDatosJson);
-   array_pop($baseDatosJson);
-   foreach ($baseDatosJson as $usuarios) {
-     $arrayUsuarios[]=json_decode($usuarios, true);
-   }
-   return $arrayUsuarios;
-}
+
 
  ?>

@@ -40,11 +40,11 @@ include_once("controladores/validar_login.php");
     endif;?>
     <form class="formulario1" action="" method="post" enctype="multipart/form-data">
       <h2>Create una cuenta para sociabilizar y aprender</h2>
-      <label for="nombre" class="label1">Nombre</label>
+      <!-- <label for="nombre" class="label1">Nombre</label>
       <input type="text" name="nombre" value="<?=(isset($errores["nombre"]))?"" :persistir("nombre");?>" class="field">
 
       <label for="apellido" class="label1">Apellido</label>
-      <input type="text" name="apellido" value="<?=(isset($errores["apellido"]))?"" :persistir("apellido");?>" class="field">
+      <input type="text" name="apellido" value="<?=(isset($errores["apellido"]))?"" :persistir("apellido");?>" class="field"> -->
 
       <label for="nombre-de-usuario" class="label1">Nombre de Usuario</label>
       <input type="text" name="nombre-de-usuario" class="field" value="<?=(isset($errores["nombre-de-usuario"]))?"" :persistir("nombre-de-usuario");?>">
@@ -61,13 +61,13 @@ include_once("controladores/validar_login.php");
       <label for="reconfi-password" class="label1">Reconfirmación de la contraseña</label>
       <input type="password" name="reconfi-password" value="" class="field">
 
-      <label for="nacimiento" class="label1">Fecha de nacimiento</label>
+      <!-- <label for="nacimiento" class="label1">Fecha de nacimiento</label>
       <input type="date" name="nacimiento" value="<?=(isset($errores["nacimiento"]))?"" :persistir("nacimiento");?>" class="field">
       <div class="sexo">
            <label for="sex" class="label1">Sexo</label><br>
            <input type="radio" name="sex" value="M" class="sexo">Masculino <br>
            <input type="radio" name="sex" value="F" class="sexo">Femenino
-      </div>
+      </div> -->
       <br>
          <div class="pais">
            <label for="pais" class="label1">Pais</label>

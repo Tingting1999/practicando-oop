@@ -56,16 +56,16 @@ if(count($errores_login)==0){
           <br><br>
           <div class="col-auto my-1">
             <div class="form-check">
-              <input class="form-check-input" type="checkbox" id="autoSizingCheck2">
-              <label class="form-check-label label1" for="autoSizingCheck2">
+              <input class="form-check-input" name="recordar" type="checkbox" id="recordarme" value="recordar">
+              <label class="form-check-label label1" for="recordar">
                 Recordame
               </label>
             </div>
           </div>
           <div class="olvidoPassword">
-            <a href="formolvidarcontrasenia.php">
-              <label for="olvido-su-contrasenia">¿Ólvido su contraseña?</label>
-            </a>
+              <label for="olvido-su-contrasenia">
+                <a href="formolvidarcontrasenia.php">¿Ólvido su contraseña?</a>
+              </label>
           </div>
           <div class="col-auto my-1">
             <button type="submit" class="bottonacceder">Iniciar sesión</button>

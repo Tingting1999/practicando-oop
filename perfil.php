@@ -1,10 +1,10 @@
 <?php
 include_once("controladores/validar_login.php");
 include_once 'includes/head.php';
-if(!isset($_SESSION["email"])) {
+/*if(!isset($_SESSION["email"])) {
     header("location:index.php");
     exit;
-}
+}*/
 ?>
 
 <title>Proyecto FloPaTin-Perfil</title>

@@ -75,7 +75,6 @@ function buscarNombreUsuario($nombreUsuario){
     return $usuario;
     }
     }
-  return null;
 }
 //quiero buscar la foto del usuario en la base de datos para que luego pueda cambiar el dato
 function buscarFoto($foto){
@@ -85,7 +84,6 @@ function buscarFoto($foto){
     return $usuario;
     }
     }
-  return null;
 }
 
 //ahora debo hacer una función para que si encontró al usuario extraer sus datos
@@ -159,14 +157,16 @@ function validarOlvidar($datos){
 
 function validar_configuracion($datos,$bandera1){
  $errores=[];
- if($bandera1 == "avatar"){
-  if ($_FILES["foto"]["error"]!=UPLOAD_ERR_OK) {
-    $errores["foto"]="Debe subir una foto";
-  }
-  $nombre=$_FILES["foto"]["name"];
-  $ext= pathinfo($nombre, PATHINFO_EXTENSION);
-  if ($ext !="jpg" && $ext !="png") {
-    $errores["foto"]="Debe ser un archivo jpg ó png";
+ if($bandera1 === "avatar"){
+   if (isset($_FILES)) {
+    if ($_FILES["foto"]["error"]!=UPLOAD_ERR_OK) {
+      $errores["foto"]="Debe subir una foto";
+    }
+    $nombre=$_FILES["foto"]["name"];
+    $ext= pathinfo($nombre, PATHINFO_EXTENSION);
+    if ($ext !="jpg" && $ext !="png") {
+      $errores["foto"]="Debe ser un archivo jpg ó png";
+    }
   }
 }else{
   $nombreUsuario=trim($datos["nombre-de-usuario"]);
@@ -177,11 +177,11 @@ function validar_configuracion($datos,$bandera1){
  return $errores;
 }
 
-function cambioFoto($datos){
+function cambioFoto($foto){
     $usuarios = abrirBaseDatos();
     foreach ($usuarios as $key=>$usuario) {
-      $usuario["foto"]= $datos["foto"];
-            $usuarios[$key] = $usuario;
+      $usuario["foto"]= $foto;
+      $usuarios[$key] = $usuario;
           }
     unlink("usuarios.json");
     foreach ($usuarios as  $usuario) {
@@ -192,7 +192,7 @@ function cambioFoto($datos){
 function cambioNombre($datos){
     $usuarios = abrirBaseDatos();
     foreach ($usuarios as $key=>$usuario) {
-      $usuario["nombreUsuario"]= $datos["nombreUsuario"];
+      $usuario["nombreUsuario"]= $datos["nombre-de-usuario"];
             $usuarios[$key] = $usuario;
           }
     unlink("usuarios.json");

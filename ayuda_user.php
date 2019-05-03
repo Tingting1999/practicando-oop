@@ -17,7 +17,7 @@
                 <br>
                 <ol>
                   <li>
-                    <a href="#pregunta1"><h3>¿Qué es Proyecto FloPaTin?</h3></a>
+                    <a href="#pregunta1"><h3>¿Qué es <strong>Proyecto FloPaTin</strong>?</h3></a>
                   </li>
                   <li>
                     <a href="#pregunta2"><h3>¿Cuál es el objetivo del Juego?</h3></a>
@@ -53,8 +53,8 @@
         <div class="card-columns listade_adyuda">
           <div class="card mb-3 p-2">
             <div class="card-body">
-              <h2 id="pregunta1" class="card-title">¿Qué es Proyecto FloPaTin?</h2>
-              <p class="card-text">Es un proyecto pensado para chicos y adolescentes, donde a través de un entretenido juego con contenidos académicos puedan aprenden y relacionarse. Nuestra comunidad fue diseñada para ofrecerles una experiencia divertida que los motive y suponga un reto, premiando a los que más saben. Allí entrarán en contacto con otros jugadores, podrán desafiarse y competir por el primer puesto.</p>
+              <h2 id="pregunta1" class="card-title">¿Qué es <strong>Proyecto FloPaTin</strong>?</h2>
+              <p class="card-text">Es un proyecto pensado para <em>chicos y adolescentes</em>, donde a través de un entretenido <em>juego con contenidos académicos</em> puedan aprenden y relacionarse. Nuestra <em>comunidad</em> fue diseñada para ofrecerles una <em>experiencia divertida</em> que los motive y suponga un reto, premiando a los que más saben. Allí entrarán en contacto con otros jugadores, <em>podrán desafiarse y competir por el primer puesto</em>.</p>
             </div>
           </div>
           <div class="card mb-3 p-2">
@@ -72,7 +72,7 @@
           <div class="card mb-3 p-2">
             <div class="card-body">
               <h2 id="pregunta4" class="card-title">¿Cómo funciona el desafío?</h2>
-              <p class="card-text">En la sección juego elige DESAFIAR y comienza a responder las preguntas antes que se acabe el tiempo. Una vez finalizado nuestro sistema te empareja con otro oponente (el cual también habrá respondido sus cinco preguntas) y te dará un resultado. ¿¡Quién será el vencedor del desafío!?</p>
+              <p class="card-text">En la sección juego elige <strong>DESAFIAR</strong> y comienza a responder las preguntas antes que se acabe el tiempo. Una vez finalizado nuestro sistema te empareja con otro oponente (el cual también habrá respondido sus cinco preguntas) y te dará un resultado. ¿¡Quién será el vencedor del desafío!?</p>
             </div>
           </div>
           <div class="card mb-3 p-2">
@@ -88,7 +88,7 @@
           <div class="card mb-3 p-2">
             <div class="card-body">
               <h2 id="pregunta6" class="card-title">¿Qué puedo hacer en mi perfil?</h2>
-              <p class="card-text">Al ingresar en nuestra comunidad te deberás crear una cuenta, con un nombre de usuario, un avatar y diversos datos de interés. En tu perfil podrás seguir tus logros, como puntos obtenidos y publicar tus gustos para que otros te conozcan. También encontrarás una sección para publicar un pequeño estado, una pequeña frase que te identifique o te guste para el día.</p>
+              <p class="card-text">Al ingresar en <strong>nuestra comunidad</strong> te deberás crear una cuenta, con un nombre de usuario, un avatar y diversos datos de interés. En tu perfil podrás seguir tus logros, como puntos obtenidos y publicar tus gustos para que otros te conozcan. También encontrarás una sección para publicar un pequeño estado, una pequeña frase que te identifique o te guste para el día.</p>
             </div>
           </div>
           <div class="card mb-3 p-2">
